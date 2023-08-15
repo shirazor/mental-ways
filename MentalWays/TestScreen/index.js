@@ -7,8 +7,15 @@ const TestScreen = ({ navigation }) => {
 		navigation.navigate('Chat');
 	};
 
+	const navigateToManager = () => {
+		navigation.navigate('Manager');
+	};
+
 	return <View style={styles.container}>
-		<Button title='Test' onPress={navigateToChat}>
+		<Button title='To Manager' onPress={navigateToManager}>
+			Test
+		</Button>
+		<Button title='To Chat' onPress={navigateToChat}>
 			Test
 		</Button>
 	</View>
