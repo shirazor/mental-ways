@@ -1,19 +1,13 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import ChatScreen from './ChatScreen';
+import CustomStack from './CustomStack';
+import { NavigationContainer } from '@react-navigation/native';
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <ChatScreen />
-    </SafeAreaView>
+    <NavigationContainer>
+      <CustomStack />
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
