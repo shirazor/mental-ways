@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Platform, KeyboardAvoidingView, Button } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 
-const ChatScreen = () => {
+const ChatScreen = ({ navigation }) => {
   const [messages, setMessages] = useState([]);
   const conversationFlow = [
     {
