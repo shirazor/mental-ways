@@ -10,8 +10,8 @@ const ManagerScreen = () => {
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
-		backgroundColor: '#fff',
+		height: '75%',
+		backgroundColor: 'red',
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
