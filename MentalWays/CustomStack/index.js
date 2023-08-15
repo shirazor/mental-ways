@@ -1,36 +1,24 @@
 import ChatScreen from '../ChatScreen';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TestScreen from '../TestScreen';
 import ManagerScreen from '../ManagerScreen';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 const CustomStack = () =>
-	<Stack.Navigator>
-		<Stack.Screen
+	<Drawer.Navigator>
+		<Drawer.Screen
 			name="Test"
 			component={TestScreen}
-			options={{
-				headerTintColor: 'white',
-				headerStyle: { backgroundColor: 'tomato' },
-			}}
 		/>
-		<Stack.Screen
+		<Drawer.Screen
 			name="Chat"
 			component={ChatScreen}
-			options={{
-				headerTintColor: 'white',
-				headerStyle: { backgroundColor: 'tomato' },
-			}}
 		/>
-		<Stack.Screen
+		<Drawer.Screen
 			name="Manager"
 			component={ManagerScreen}
-			options={{
-				headerTintColor: 'white',
-				headerStyle: { backgroundColor: 'blue' },
-			}}
 		/>
-	</Stack.Navigator>;
+	</Drawer.Navigator>;
 
 export default CustomStack;
