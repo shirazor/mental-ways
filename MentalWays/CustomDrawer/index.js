@@ -1,13 +1,13 @@
 import ChatScreen from '../ChatScreen';
 import HomeScreen from '../HomeScreen';
-import ManagerScreen from '../ManagerScreen';
+import ManageScreen from '../ManageScreen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CreateConversion from '../ManagerScreen/createConversion';
 
 const Drawer = createDrawerNavigator();
 
 const CustomDrawer = () =>
-	<Drawer.Navigator>
+	<Drawer.Navigator screenOptions={{ headerStyle: { backgroundColor: '#f0d7c2' } }}>
 		<Drawer.Screen
 			name="דף הבית"
 			component={HomeScreen}
@@ -18,7 +18,7 @@ const CustomDrawer = () =>
 		/>
 		<Drawer.Screen
 			name="ניהול שיחות"
-			component={ManagerScreen}
+			component={ManageScreen}
 		/>
 		<Drawer.Screen
 			name="צור שיחות"

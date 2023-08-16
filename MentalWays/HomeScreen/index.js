@@ -4,11 +4,11 @@ import { StyleSheet } from 'react-native';
 const HomeScreen = ({ navigation }) => {
 
 	const navigateToChat = () => {
-		navigation.navigate('Chat');
+		navigation.navigate('צ\'אט');
 	};
 
 	const navigateToManager = () => {
-		navigation.navigate('Manager');
+		navigation.navigate('ניהול שיחות');
 	};
 
 	return <View style={styles.container}>
