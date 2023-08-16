@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { FAB } from 'react-native-elements';
 import ChatListItem from './ChatListItem';
 
@@ -50,26 +50,34 @@ const shit = [
 	},
 ]
 
-const ManageScreen = () => {
-	const [selectedItemId, setSelectedItemId] = useState();
-
+const ManageScreen = ({ navigation }) => {
 	const renderChatItem = ({ item }) => <ChatListItem
 		item={item}
-		onPress={() => setSelectedItemId(item.id)}
+		onPress={() => navigateToCreateConversation(item.id)}
 	/>;
+
+	const navigateToCreateConversation = (id) => {
+		navigation.navigate('צור שיחות', { id });
+	};
 
 	return (
 		<View style={styles.container}>
 			<View style={styles.header}>
 				<Text style={styles.title}>עריכת שיחות</Text>
-				<FAB size='small' icon={{ name: 'add', color: 'white' }} color='#6b9080' />
+				<FAB
+					onPress={() => navigateToCreateConversation(null)}
+					size='small'
+					icon={{
+						name: 'add',
+						color: 'white'
+					}}
+					color='#6b9080' />
 			</View>
 			<FlatList
 				style={styles.flatList}
 				data={shit}
 				renderItem={renderChatItem}
 				keyExtractor={item => item.id}
-				extraData={selectedItemId}
 			/>
 		</View>
 	);

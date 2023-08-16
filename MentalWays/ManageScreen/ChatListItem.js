@@ -1,10 +1,11 @@
 import { Text } from "react-native";
 import { TouchableOpacity, StyleSheet } from "react-native";
 
-const ChatListItem = ({ item, onPress }) =>
-	<TouchableOpacity onPress={onPress} style={styles.item}>
+const ChatListItem = ({ item, onPress }) => {
+	return <TouchableOpacity onPress={onPress} style={styles.item}>
 		<Text style={styles.text}>{item.title}</Text>
 	</TouchableOpacity>;
+}
 
 const styles = StyleSheet.create({
 	item: {
