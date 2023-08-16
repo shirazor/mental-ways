@@ -1,7 +1,7 @@
 import { View, Button } from 'react-native';
 import { StyleSheet } from 'react-native';
 
-const TestScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation }) => {
 
 	const navigateToChat = () => {
 		navigation.navigate('Chat');
@@ -27,4 +27,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default TestScreen;
+export default HomeScreen;

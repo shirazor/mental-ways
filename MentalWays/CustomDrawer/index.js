@@ -1,24 +1,24 @@
 import ChatScreen from '../ChatScreen';
-import TestScreen from '../TestScreen';
+import HomeScreen from '../HomeScreen';
 import ManagerScreen from '../ManagerScreen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Drawer = createDrawerNavigator();
 
-const CustomStack = () =>
+const CustomDrawer = () =>
 	<Drawer.Navigator>
 		<Drawer.Screen
-			name="Test"
-			component={TestScreen}
+			name="דף הבית"
+			component={HomeScreen}
 		/>
 		<Drawer.Screen
-			name="Chat"
+			name="צ'אט"
 			component={ChatScreen}
 		/>
 		<Drawer.Screen
-			name="Manager"
+			name="ניהול שיחות"
 			component={ManagerScreen}
 		/>
 	</Drawer.Navigator>;
 
-export default CustomStack;
+export default CustomDrawer;
