@@ -1,59 +1,51 @@
-import { createDocument,updateDocument,getDocuments,deleteDocument } from "../services/genericService";
+import {
+  createDocument,
+  updateDocument,
+  getDocuments,
+  deleteDocument,
+} from "../services/genericService.js";
 
-const createDocument = async (req, res) => {
-  const modelName = req.params.model;
-  const Model = require(`../models/${modelName}`);
-  
+import { models } from "../models/models.js";
+
+export const addDocument = async ({ params: { model }, body }, res) => {
+  const Model = models[model];
   try {
-    const newDocument = await genericService.createDocument(Model, req.body);
+    const newDocument = await createDocument(Model, body);
     res.json(newDocument);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-const getDocuments = async (req, res) => {
-  const modelName = req.params.model;
-  const Model = require(`../models/${modelName}`);
-  
+export const showAllDocuments = async ({ params: { model } }, res) => {
+  const Model = models[model];
   try {
-    const documents = await genericService.getDocuments(Model);
-    res.json(documents);
+    const documents = await getDocuments(Model);
+    return res.json(documents);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-const updateDocument = async (req, res) => {
-  const modelName = req.params.model;
-  const Model = require(`../models/${modelName}`);
-  
+export const changeDocument = async ({ params: { model, id }, body }, res) => {
+  const Model = models[model];
   try {
-    const documentId = req.params.id;
-    const updates = req.body;
-    const result = await genericService.updateDocument(Model, documentId, updates);
+    const documentId = id;
+    const updates = body;
+    const result = await updateDocument(Model, documentId, updates);
     res.json(result);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-const deleteDocument = async (req, res) => {
-  const modelName = req.params.model;
-  const Model = require(`../models/${modelName}`);
-  
+export const removeDocument = async ({ params: { model, id } }, res) => {
+  const Model = models[model];
   try {
-    const documentId = req.params.id;
-    const result = await genericService.deleteDocument(Model, documentId);
+    const documentId = id;
+    const result = await deleteDocument(Model, documentId);
     res.json(result);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-};
-
-module.exports = {
-  createDocument,
-  getDocuments,
-  updateDocument,
-  deleteDocument,
 };

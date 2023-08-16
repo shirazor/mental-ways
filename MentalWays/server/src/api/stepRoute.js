@@ -1,9 +1,8 @@
 import { AsyncRouter } from "express-async-router";
-import genericController from "../controllers/genericController";
-const {get,patch,delete:remove,post} = AsyncRouter();
+import {addDocument,showAllDocuments,removeDocument,changeDocument} from "../controllers/genericController.js";
 
-get("/",
-    genericController.createDocument);
+const convoRoute = AsyncRouter();
+const {get,patch,delete:remove,post} = convoRoute;
 
 
-export default AsyncRouter;    
+export default convoRoute;    
