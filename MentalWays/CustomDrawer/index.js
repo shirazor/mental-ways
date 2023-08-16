@@ -7,7 +7,13 @@ import CreateConversion from '../ManageScreen/CreateConversion';
 const Drawer = createDrawerNavigator();
 
 const CustomDrawer = () =>
-	<Drawer.Navigator screenOptions={{ headerStyle: { backgroundColor: '#f0d7c2' } }}>
+	<Drawer.Navigator
+		backBehavior='history'
+		screenOptions={{
+			headerStyle: {
+				backgroundColor: '#f0d7c2'
+			}
+		}}>
 		<Drawer.Screen
 			name="דף הבית"
 			component={HomeScreen}

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { FAB } from 'react-native-elements';
 import ChatListItem from './ChatListItem';
