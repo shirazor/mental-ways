@@ -1,10 +1,19 @@
-import { View, Button } from 'react-native';
-import { StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { View } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
+import { Button, Card, Text, CheckBox } from 'react-native-elements';
 
 const HomeScreen = ({ navigation }) => {
 
+	const [isTermsAgreed, setIsTermsAgreed] = useState(false);
+
 	const navigateToChat = () => {
-		navigation.navigate('צ\'אט');
+		if (isTermsAgreed) {
+			navigation.navigate('ChatScreen');
+		}
+		else {
+
+		}
 	};
 
 	const navigateToManager = () => {
@@ -12,19 +21,57 @@ const HomeScreen = ({ navigation }) => {
 	};
 
 	return <View style={styles.container}>
-		<Button title='To Manager' onPress={navigateToManager}>
-			Test
-		</Button>
-		<Button title='To Chat' onPress={navigateToChat}>
-			Test
-		</Button>
-	</View>
+		<Image style={{ flex: 1, resizeMode: 'cover' }} source={require('../assets/homePage.jpeg')} />
+		<View  style={{ position: 'absolute', top: 20, left: 0, right: 0, opacity: 0.85 }} >
+		<Card >
+			<Card.Title>איך זה עובד:</Card.Title>
+			<Card.Divider />
+			<View style={{ position: "relative", alignItems: "center" }}>
+				<Text style={styles.buttonTitle}>MentalWays מנגישה מידע מותאם אישית בצורה קלה ונוחהת מלווה בקבלת שירות ושומרת על רצף ומעקב טיפולי עבור המתמודדים.ות ובני משפחתם</Text>
+				<CheckBox
+					center
+					title="שימוש במידע על אחריות המשתמש בלבד"
+					checked={isTermsAgreed}
+					onPress={() => setIsTermsAgreed(prev => !prev)}
+				/>
+				<Button
+					title="להמשיך בשיחה"
+					buttonStyle={{
+						backgroundColor: 'rgba(111, 202, 186, 1)',
+						borderRadius: 5,
+					}}
+					titleStyle={{ fontWeight: 'bold', fontSize: 23 }}
+					containerStyle={{
+						marginHorizontal: 50,
+						height: 50,
+						width: 200,
+						marginVertical: 10,
+					}}
+					onPress={navigateToChat}
+				/>
+			</View>
+		</Card>
+		</View>
+  </View>
 };
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: 'green'
+		flex: 1,
+		flexDirection: 'column',
+		backgroundColor: '#6b9080'
 	},
+	button: {
+		width: 200,
+		height: 200,
+		borderRadius: 100,
+		fontSize: 50,
+		backgroundColor: '#6b9080',
+		alignSelf: 'center'
+	}, buttonTitle: {
+		textAlign: 'center',
+		writingDirection: 'rtl'
+	}
 });
 
 export default HomeScreen;

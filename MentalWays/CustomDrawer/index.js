@@ -13,10 +13,6 @@ const CustomDrawer = () =>
 			component={HomeScreen}
 		/>
 		<Drawer.Screen
-			name="צ'אט"
-			component={ChatScreen}
-		/>
-		<Drawer.Screen
 			name="ניהול שיחות"
 			component={ManageScreen}
 		/>
