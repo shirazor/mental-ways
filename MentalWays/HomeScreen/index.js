@@ -2,22 +2,28 @@ import { useState } from 'react';
 import { View } from 'react-native';
 import { StyleSheet, Image } from 'react-native';
 import { Button, Card, Text, CheckBox } from 'react-native-elements';
+import AlertComponent from '../Alert'; 
 
 const HomeScreen = ({ navigation }) => {
 
 	const [isTermsAgreed, setIsTermsAgreed] = useState(false);
+	const [isAlertVisible, setAlertVisible] = useState(false);
+
+	const openAlert = () => {
+	  setAlertVisible(true);
+	};
+  
+	const closeAlert = () => {
+	  setAlertVisible(false);
+	};
 
 	const navigateToChat = () => {
 		if (isTermsAgreed) {
-			navigation.navigate('ChatScreen');
+			navigation.navigate("צ'אט");
 		}
 		else {
-
+			openAlert();
 		}
-	};
-
-	const navigateToManager = () => {
-		navigation.navigate('ניהול שיחות');
 	};
 
 	return <View style={styles.container}>
@@ -27,7 +33,7 @@ const HomeScreen = ({ navigation }) => {
 			<Card.Title>איך זה עובד:</Card.Title>
 			<Card.Divider />
 			<View style={{ position: "relative", alignItems: "center" }}>
-				<Text style={styles.buttonTitle}>MentalWays מנגישה מידע מותאם אישית בצורה קלה ונוחהת מלווה בקבלת שירות ושומרת על רצף ומעקב טיפולי עבור המתמודדים.ות ובני משפחתם</Text>
+				<Text style={styles.buttonTitle}>MentalWays מנגישה מידע מותאם אישית בצורה קלה ונוחה מלווה בקבלת שירות ושומרת על רצף ומעקב טיפולי עבור המתמודדים.ות ובני משפחתם</Text>
 				<CheckBox
 					center
 					title="שימוש במידע על אחריות המשתמש בלבד"
@@ -52,6 +58,7 @@ const HomeScreen = ({ navigation }) => {
 			</View>
 		</Card>
 		</View>
+		<AlertComponent isVisible={isAlertVisible} onClose={closeAlert} />
   </View>
 };
 
