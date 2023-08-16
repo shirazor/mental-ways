@@ -7,7 +7,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const NewQuestion = ({ step, index, setSteps }) => {
     const [answers, setAnswers] = useState([...step.answers]);
-    console.log(answers)
 
     return (
         <Card containerStyle={styles.Card}>
