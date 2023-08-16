@@ -2,6 +2,7 @@ import {
   createDocument,
   updateDocument,
   getDocuments,
+  getDocument,
   deleteDocument,
 } from "../services/genericService.js";
 
@@ -12,6 +13,17 @@ export const addDocument = async ({ params: { model }, body }, res) => {
   try {
     const newDocument = await createDocument(Model, body);
     res.json(newDocument);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
+export const showDocument = async ({ params: { model, id} }, res) => {
+  const Model = models[model];
+  try {
+    const documents = await getDocument(Model,id);
+    return res.json(documents);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

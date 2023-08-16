@@ -6,6 +6,10 @@ export const getDocuments = async (Model) => (
    await Model.find()
 );
 
+export const getDocument = async (Model,id) => (
+  await Model.findById(id)
+);
+
 export const updateDocument = async (Model, id, updates) => {
   return await Model.updateOne({ _id: id }, { $set: updates });
 };

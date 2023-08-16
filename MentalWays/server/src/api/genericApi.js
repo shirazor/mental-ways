@@ -4,12 +4,15 @@ import {
   showAllDocuments,
   removeDocument,
   changeDocument,
+  showDocument
 } from "../controllers/genericController.js";
 
 const genericRoute = AsyncRouter();
 const { get, patch, delete: remove, post } = genericRoute;
 
 get("/:model", (req, res) => showAllDocuments(req, res));
+
+get("/:model/:id", (req, res) => showDocument(req, res));
 
 patch("/:model/:id", (req, res) => changeDocument(req, res));
 
