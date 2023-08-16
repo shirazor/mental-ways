@@ -75,6 +75,7 @@ const ChatScreen = ({ navigation }) => {
       return (
         <View style={{ flex: 1 }}>
           <GiftedChat
+          disableComposer={true}
             messages={messages}
             onSend={onSend}
             user={{
