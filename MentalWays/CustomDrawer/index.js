@@ -1,8 +1,8 @@
 import ChatScreen from '../ChatScreen';
 import HomeScreen from '../HomeScreen';
-import ManageScreen from '../ManageScreen';
+import ManageScreen from '../ManageConversions';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import CreateConversion from '../ManageScreen/CreateConversion';
+import CreateConversion from '../CreateConversion';
 
 const Drawer = createDrawerNavigator();
 
