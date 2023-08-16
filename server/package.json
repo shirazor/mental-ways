@@ -23,8 +23,6 @@
     "express": "^4.18.2",
     "express-async-router": "^0.1.15",
     "mongoose": "^7.4.3",
-    "mongoose-plugin-seed": "^0.4.0",
-    "mongoose-seed": "^0.6.0",
     "start": "^5.1.0"
   }
 }
