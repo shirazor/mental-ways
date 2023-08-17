@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
 		width: '100%',
 		maxHeight: 200,
 		flexDirection: 'column',
-		alignItems: 'center',
 		justifyContent: 'space-evenly'
 	},
 	quickReplyButton: {
