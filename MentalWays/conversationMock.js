@@ -1,12 +1,48 @@
+const stepEight = {
+    _id: 8,
+    question: "אנא תארו את חומרת התסמינים",
+    answers: []
+}
+
+const stepSeven = {
+    _id: 7,
+    question: "אנא פנו למבוגר להמשך טיפול",
+    answers: []
+}
+
+const stepSix = {
+    _id: 6,
+    question: "האם יש מבוגר בקרבת מקום?",
+    answers: [
+        {
+            value: "כן",
+            nextStep: stepSeven
+        },
+        {
+            value: "לא",
+            nextStep: stepEight
+        }
+    ]
+}
+
 const stepFive = {
     _id: 5,
-    question: "באפשרותך לפנות לרופא מומחה,\nלמציאת רופא צור קשר עם קופת החולים",
-    answers: []
+    question: "מהו טווח הגילאים?",
+    answers: [
+        {
+            value: "פחות מ-18",
+            nextStep: stepSix
+        },
+        {
+            value: "18 ומעלה",
+            nextStep: stepEight
+        }
+    ]
 }
 
 const stepFour = {
     _id: 4,
-    question: "אנא פנו למוקד רפואה דחופה",
+    question: "אנא התקשרו למדא ולמשטרה במיידי",
     answers: []
 }
 
