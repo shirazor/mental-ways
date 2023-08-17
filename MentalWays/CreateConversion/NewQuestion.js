@@ -4,9 +4,12 @@ import { Input, Text, Card, FAB } from '@rneui/themed';
 import EditAnswer from './components/editAnswer';
 import { ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import useConversation from './newConversationContext'
 
-const NewQuestion = ({ step, index, setSteps }) => {
+const NewQuestion = ({ step, index }) => {
+    const {editStep, editQuestion, removeStep} = useConversation();
     const [answers, setAnswers] = useState([...step.answers]);
+    const [currentStep, setCurrentStep] = useState(step);
 
     return (
         <Card containerStyle={styles.Card}>
@@ -14,16 +17,14 @@ const NewQuestion = ({ step, index, setSteps }) => {
                 <View style={{width: 17}}></View>
                 <Card.Title>{`שאלה ${index + 1}`}</Card.Title>
                 <Icon name="times" size={23} color="red"
-                    onPress={() => setSteps(prevSteps => {
-                        const copiedSteps = [...prevSteps];
-                        copiedSteps.splice(index, 1);
-
-                        return copiedSteps;
-                    })} />
+                    onPress={() => removeStep(index)} />
             </View>
             <Input
                 placeholder='השאלה'
-                onChange={({ nativeEvent }) => setInitalStep({ ...initalStep, question: nativeEvent.text })}
+                onChange={({ nativeEvent }) => {
+                    editQuestion(currentStep, nativeEvent.text)
+                    setCurrentStep(prev => ({...prev, question: nativeEvent.text}))
+                }}
                 value={step.question || ''}
             />
             <Text>תשובות אפשריות</Text>
@@ -32,7 +33,8 @@ const NewQuestion = ({ step, index, setSteps }) => {
                     key={index}
                     answerInfo={answer}
                     setAnswers={setAnswers}
-                    answerIndex={index} />)}
+                    answerIndex={index}
+                    currentStep={currentStep} />)}
                 <View style={styles.AddAnswer}>
                     <FAB
                         onPress={() => setAnswers(prevAnswers => {
