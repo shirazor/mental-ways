@@ -5,5 +5,5 @@ import answer from "./Answer.js";
 export const models = {
     "step": step,
     "conversation": convo,
-    "Answer": answer 
+    "answer": answer 
 }
