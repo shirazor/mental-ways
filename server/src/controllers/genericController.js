@@ -3,10 +3,11 @@ import {
   updateDocument,
   getDocuments,
   getDocument,
-  deleteDocument,
+  deleteDocument
 } from "../services/genericService.js";
 
 import { models } from "../models/models.js";
+import { getDocumentTree } from "../services/getTree.js";
 
 export const showDocument = async ({ params: { model, id} }, res) => {
   const Model = models[model];
@@ -14,6 +15,19 @@ export const showDocument = async ({ params: { model, id} }, res) => {
     const documents = await getDocument(Model,id);
     return res.json(documents);
   } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
+export const showDocumentPop = async ({ params: { model, id} }, res) => {
+  const Model = models[model];
+  try {
+    const documents = await getDocumentTree(Model,id,[]);
+    console.log("this is docmnts", documents);
+    return res.json(documents);
+  } catch (error) {
+    console.log("error")
     res.status(500).json({ error: error.message });
   }
 };

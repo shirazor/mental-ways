@@ -5,11 +5,22 @@ const stepSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  answers: [{
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: "Answer",
+  answers: [
+    {
+      value: {
+        type: String,
+        required: true,
+      },
+      nextStep: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "Step",
+      },
+    },
+  ],
+  index: {
+    type: Number,
     required: true,
-  }],
+  },
 });
 
 const step = mongoose.model("Step", stepSchema);

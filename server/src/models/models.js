@@ -4,6 +4,5 @@ import answer from "./Answer.js";
 
 export const models = {
     "step": step,
-    "conversation": convo,
-    "answer": answer 
+    "conversation": convo
 }
