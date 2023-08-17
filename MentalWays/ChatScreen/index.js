@@ -4,6 +4,8 @@ import { Avatar, Bubble, GiftedChat, Message, MessageText, Time } from 'react-na
 import { conversationMock } from '../conversationMock';
 import avatarPicture from '../assets/avatar.png';
 import QuickReplies from './QuickReplies';
+import { Button } from 'react-native';
+import ClearChatButton from './ClearChatButton';
 
 const chatBotUser = {
   _id: 1,
@@ -120,7 +122,12 @@ const ChatScreen = ({ navigation }) => {
     }}
   />
 
-  const renderInputToolbar = () => null;
+  const clearChat = () => {
+    setCurrentStep(conversationMock.initialStep);
+    setMessages([initialMessage])
+  }
+
+  const renderInputToolbar = () => <ClearChatButton onPress={clearChat} />;
 
   return (
     <View style={{ flex: 1 }}>
@@ -135,7 +142,7 @@ const ChatScreen = ({ navigation }) => {
         renderMessageText={renderMessageText}
         renderBubble={renderBubble}
         renderTime={renderTime}
-        renderAvatar={renderAvatar}
+        // renderAvatar={renderAvatar}
         // renderMessage={renderMessage}
         renderInputToolbar={renderInputToolbar}
       />

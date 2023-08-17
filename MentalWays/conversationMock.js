@@ -1,12 +1,12 @@
 const stepFive = {
-    _id: 4,
-    question: "אז הכל טוב",
+    _id: 5,
+    question: "באפשרותך לפנות לרופא מומחה,\nלמציאת רופא צור קשר עם קופת החולים",
     answers: []
 }
 
 const stepFour = {
     _id: 4,
-    question: "אנא פנו למוקד רפואה",
+    question: "אנא פנו למוקד רפואה דחופה",
     answers: []
 }
 
