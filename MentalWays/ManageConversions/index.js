@@ -4,48 +4,48 @@ import ChatListItem from './ChatListItem';
 
 const shit = [
 	{
-		id: 'shit',
-		title: 'shit'
+		id: '1',
+		title: 'שיחה1'
 	},
 	{
-		id: 'shit2',
-		title: 'shit'
+		id: '2',
+		title: 'שיחה2'
 	},
 	{
-		id: 'shit3',
-		title: 'shit'
+		id: '3',
+		title: 'שיחה3'
 	},
 	{
-		id: 'shit4',
-		title: 'shit'
+		id: '4',
+		title: 'שיחה4'
 	},
 	{
-		id: 'shit5',
-		title: 'shit3dsw'
+		id: '5',
+		title: 'שיחה5'
 	},
 	{
-		id: 'shit6',
-		title: 'shit'
+		id: '6',
+		title: 'שיחה6'
 	},
 	{
-		id: 'shit7',
-		title: 'shit'
+		id: '7',
+		title: 'שיחה7'
 	},
 	{
-		id: 'שיט',
-		title: 'שיט7'
+		id: '8',
+		title: 'שיחה8'
 	},
 	{
-		id: 'shit9',
-		title: 'shit'
+		id: '9',
+		title: 'שיחה9'
 	},
 	{
-		id: 'shit10',
-		title: 'shit'
+		id: '10',
+		title: 'שיחה10'
 	},
 	{
-		id: 'shit11',
-		title: 'shitdaw'
+		id: '11',
+		title: 'שיחה11'
 	},
 ]
 
@@ -85,7 +85,7 @@ const ManageScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
 	container: {
 		height: '100%',
-		backgroundColor: '#f0d7c2',
+		backgroundColor: '#eee6dF',
 		alignItems: 'center'
 	},
 	header: {

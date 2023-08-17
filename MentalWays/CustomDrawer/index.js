@@ -11,7 +11,7 @@ const CustomDrawer = () =>
 		backBehavior='history'
 		screenOptions={{
 			headerStyle: {
-				backgroundColor: '#f0d7c2'
+				backgroundColor: '#eee6dF'
 			}
 		}}>
 		<Drawer.Screen

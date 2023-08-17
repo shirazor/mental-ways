@@ -1,73 +1,62 @@
+const stepFive = {
+    _id: 4,
+    question: "אז הכל טוב",
+    answers: []
+}
+
 const stepFour = {
     _id: 4,
-    question: "thanks for answering",
-    answers: [
-        {
-            value: "back to begining",
-            nextStep: stepOne
-        },
-        {
-            value: "finish",
-            nextStep: null
-        }
-    ]
-  }
-  
-  const stepThree = {
+    question: "אנא פנו למוקד רפואה",
+    answers: []
+}
+
+const stepThree = {
     _id: 3,
-    question: "or harush lives in",
+    question: "האם האדם נמצא בסכנה מיידית?",
     answers: [
         {
-            value: "raanana",
+            value: "כן",
             nextStep: stepFour
         },
         {
-            value: "eilat",
-            nextStep: stepFour
-        },
-        {
-            value: "back to first question",
-            nextStep: stepOne
+            value: "לא",
+            nextStep: stepFive
         }
     ]
-  }
+}
 
-  const steptwo = {
+const steptwo = {
     _id: 2,
-    question: "amit favorite food is",
+    question: "האם מדובר במקרה חירום?",
     answers: [
         {
-            value: "hamburger",
+            value: "כן",
             nextStep: stepFour
         },
         {
-            value: "pizza",
-            nextStep: stepFour
-        },
-        {
-            value: "back to first question",
-            nextStep: stepOne
+            value: "לא",
+            nextStep: stepFive
         }
     ]
-  }
+}
 
-  const stepOne = {
+const stepOne = {
     _id: 1,
-    question: "ask next questio about:",
+    question: "היי,\nאיך אוכל לעזור?",
     answers: [
         {
-            value: "amit michles",
+            value: "אני לא מרגיש טוב",
             nextStep: steptwo
         },
         {
-            value: "or harush",
+            value: "עזרה עבור אדם קרוב",
             nextStep: stepThree
         }
     ]
-  }
+}
 
- export const conversationMock = {
+export const conversationMock = {
     _id: 1,
     title: 'hello',
     initialStep: stepOne
-  };
+};
