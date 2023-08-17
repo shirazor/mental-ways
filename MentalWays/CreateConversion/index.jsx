@@ -9,9 +9,9 @@ const CreateConversion = () => {
     const [conversion, setConversion] = useState();
     const [initalStep, setInitalStep] = useState();
     const [steps, setSteps] = useState([{
-        id: 1, question: 'זאת השאלה של או ר הרוש', answers: [
-            { value: 'תשובה 1', nextStep: {} },
-            { value: 'תשובה של עמית מכלס האפס', nextStep: {} }]
+        id: 1, question: '', answers: [
+            { value: '', nextStep: {} },
+            { value: '', nextStep: {} }]
     }]);
 
     const saveIntialStep = () => {
