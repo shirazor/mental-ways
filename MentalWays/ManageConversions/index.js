@@ -1,55 +1,10 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { FAB } from 'react-native-elements';
 import ChatListItem from './ChatListItem';
-
-const shit = [
-	{
-		id: '1',
-		title: 'שיחה1'
-	},
-	{
-		id: '2',
-		title: 'שיחה2'
-	},
-	{
-		id: '3',
-		title: 'שיחה3'
-	},
-	{
-		id: '4',
-		title: 'שיחה4'
-	},
-	{
-		id: '5',
-		title: 'שיחה5'
-	},
-	{
-		id: '6',
-		title: 'שיחה6'
-	},
-	{
-		id: '7',
-		title: 'שיחה7'
-	},
-	{
-		id: '8',
-		title: 'שיחה8'
-	},
-	{
-		id: '9',
-		title: 'שיחה9'
-	},
-	{
-		id: '10',
-		title: 'שיחה10'
-	},
-	{
-		id: '11',
-		title: 'שיחה11'
-	},
-]
+import useConverstionsData from '../conversationsContext'
 
 const ManageScreen = ({ navigation }) => {
+	const {conversions} = useConverstionsData();
 	const renderChatItem = ({ item }) => <ChatListItem
 		item={item}
 		onPress={() => navigateToCreateConversation(item.id)}
@@ -74,7 +29,7 @@ const ManageScreen = ({ navigation }) => {
 			</View>
 			<FlatList
 				style={styles.flatList}
-				data={shit}
+				data={conversions}
 				renderItem={renderChatItem}
 				keyExtractor={item => item.id}
 			/>

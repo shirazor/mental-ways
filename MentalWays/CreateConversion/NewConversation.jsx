@@ -7,27 +7,21 @@ import { ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Button, Input } from 'react-native-elements';
 import useConversation from './newConversationContext'
+import useConverstionsData from '../conversationsContext';
 
 const NewConversion = () => {
-    const { editStep, steps, setTitle, saveConversation } = useConversation();
-    const [conversion, setConversion] = useState();
-    const [initalStep, setInitalStep] = useState();
+    const {setConversations} = useConverstionsData()
+    const { editStep, steps, setTitle, createConversation, conversion } = useConversation();
 
-    // const [steps, setSteps] = useState([{
-    //     id: 1, question: 'זאת השאלה של או ר הרוש', answers: [
-    //         { value: 'תשובה 1', nextStep: {} },
-    //         { value: 'תשובה של עמית מכלס האפס', nextStep: {} }]
-    // }]);
+    const onSave = async () => {
+        const finalConversation = createConversation();
 
-    const saveIntialStep = () => {
-        setConversion({ ...conversion, initalStep })
+        setConversations(prev => 
+            [...prev, finalConversation]
+        )
+
+        // await axios.post("https://mental-ways-git-mental-ways.apps.cluster-lmzsk.lmzsk.sandbox209.opentlc.com/conversation", finalConversation);
     }
-
-    // const onSave = () => {
-    //     axios.post("https://mental-ways-git-mental-ways.apps.cluster-lmzsk.lmzsk.sandbox209.opentlc.com/conversation", conversion).then(
-
-    //     )
-    // }
 
     return (
         <View style={styles.container}>
@@ -42,7 +36,9 @@ const NewConversion = () => {
                     onChange={event => setTitle(event.nativeEvent.text)} 
                     value={conversion?.title}></Input></View>
                 {/* <Button > */}
-                <TouchableOpacity onPress={saveConversation}>
+                <TouchableOpacity onPress={async () => {
+                    await onSave()
+                }}>
                      <Icon name="save" size={30} color="#6b9080" />
                 </TouchableOpacity>
                 

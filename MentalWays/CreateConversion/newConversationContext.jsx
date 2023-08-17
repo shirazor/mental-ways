@@ -1,15 +1,16 @@
-import {createContext, useContext, useState} from 'react'
+import { createContext, useContext, useState } from 'react'
+import axios from 'axios';
 
 const newConversationContext = createContext();
 
-export const NewConversationProvider = ({children}) => {
+export const NewConversationProvider = ({ children }) => {
     const [conversion, setConversion] = useState({});
     const [steps, setSteps] = useState([]);
-    
-    const saveConversation = () => {
+
+    const createConversation = () => {
         const finalConversation = conversion;
-        
-        const sortedSteps = steps.sort((a,b) => b.id - a.id);
+
+        const sortedSteps = steps.sort((a, b) => b.id - a.id);
         const populatedArray = [];
         sortedSteps.forEach(step => {
             const answers = step.answers?.map(x => ({
@@ -17,22 +18,24 @@ export const NewConversationProvider = ({children}) => {
                 nextStep: populatedArray.find(step => step.id === x?.nextStep)
             }))
 
-            populatedArray.push({...step, answers});
+            populatedArray.push({ ...step, answers });
         })
-        
+
         finalConversation.initialStep = populatedArray.find(x => x.id === 0);
+
+        return finalConversation;
     }
 
     const editStep = step => {
-       setSteps(prev => {
-        const temp = [...prev]
-        if( temp[step.index]) { 
-            temp[step.index] = step; 
-        } else {
-            temp.push(step);
-        }
-        return temp;
-       });
+        setSteps(prev => {
+            const temp = [...prev]
+            if (temp[step.index]) {
+                temp[step.index] = step;
+            } else {
+                temp.push(step);
+            }
+            return temp;
+        });
     }
 
     const removeStep = stepIndex => {
@@ -42,10 +45,10 @@ export const NewConversationProvider = ({children}) => {
 
             return copiedSteps;
         })
-     }
+    }
 
     const editQuestion = (step, newQuestion) => {
-        editStep({...step, question: newQuestion});
+        editStep({ ...step, question: newQuestion });
     }
 
     const editAnswer = (stepId, answer, index) => {
@@ -57,7 +60,7 @@ export const NewConversationProvider = ({children}) => {
                 temp[stepId].answers = [answer]
             }
             else {
-                if (index !== -1){
+                if (index !== -1) {
                     temp[stepId].answers[index] = answer;
                 }
                 else {
@@ -69,15 +72,15 @@ export const NewConversationProvider = ({children}) => {
     }
 
     const setTitle = title => {
-        setConversion({...conversion, title})
+        setConversion({ ...conversion, title })
     }
 
     const setInitalStep = initialStep => {
-        setConversion({...conversion, initialStep})
+        setConversion({ ...conversion, initialStep })
     }
-    
 
-    return <newConversationContext.Provider value={{saveConversation, editStep, editAnswer, setTitle, setInitalStep, editQuestion, steps, conversion, removeStep}}>
+
+    return <newConversationContext.Provider value={{createConversation, editStep, editAnswer, setTitle, setInitalStep, editQuestion, steps, conversion, removeStep }}>
         {children}
     </newConversationContext.Provider>
 }
